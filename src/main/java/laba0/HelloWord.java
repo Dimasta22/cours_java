@@ -1,6 +1,6 @@
-package com.example;
+package laba0;
 
-public class hello_word {
+public class HelloWord {
     public static void main(String args[]) {
         System.out.println("Hello Java");
     }

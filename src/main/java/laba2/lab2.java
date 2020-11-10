@@ -1,4 +1,4 @@
-package com.example;
+package laba2;
 
 import java.util.Scanner;
 import java.lang.Math;
