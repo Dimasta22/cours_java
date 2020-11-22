@@ -10,8 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UniversityGenerate {
+    public University createUniversity(){
 
-    public UniversityGenerate(){
+
         University universityModel = retriveUniversityFromDatabase();
 
 
@@ -19,8 +20,10 @@ public class UniversityGenerate {
         UniversityController universityController = new UniversityController(universityModel, universityView);
 
         universityController.updateUniversityView();
+
+        return universityModel;
     }
-    private static University retriveUniversityFromDatabase() {
+    private University retriveUniversityFromDatabase() {
         String name;
 
         Scanner scanner = new Scanner(System.in);
@@ -34,11 +37,10 @@ public class UniversityGenerate {
         BossView bossView = new BossView();
         BossController bossController = new BossController(universityBoss, bossView);
         bossController.updateBossView();
+        university.setBossUniversity(universityBoss);
 
         System.out.print("Enter location of University: ");
         university.setLocationCities(scanner.next());
-
-
 
         ArrayList<Faculty> faculties = (ArrayList<Faculty>) createFaculty(scanner);
         university.setFaculties(faculties);
@@ -46,7 +48,7 @@ public class UniversityGenerate {
         return university;
     }
 
-    private static List<Faculty> createFaculty(Scanner scanner) {
+    private List<Faculty> createFaculty(Scanner scanner) {
         ArrayList<Faculty> faculties = new ArrayList<Faculty>();
         boolean listCreateFlag = true;
 
@@ -67,7 +69,7 @@ public class UniversityGenerate {
         return faculties;
     }
 
-    private static Faculty retriveFacultyFromDatabase() {
+    private Faculty retriveFacultyFromDatabase() {
         String name;
 
         Scanner scanner = new Scanner(System.in);
@@ -81,6 +83,7 @@ public class UniversityGenerate {
         BossView bossView = new BossView();
         BossController bossController = new BossController(facultyBoss, bossView);
         bossController.updateBossView();
+        faculty.setBossFaculty(facultyBoss);
 
         ArrayList<Department> departments = (ArrayList<Department>) createDepartment(scanner);
         faculty.setDepartments(departments);
@@ -88,7 +91,7 @@ public class UniversityGenerate {
         return faculty;
     }
 
-    private static List<Department> createDepartment(Scanner scanner) {
+    private List<Department> createDepartment(Scanner scanner) {
         ArrayList<Department> departments = new ArrayList<Department>();
         boolean listCreateFlag = true;
 
@@ -109,7 +112,7 @@ public class UniversityGenerate {
         return departments;
     }
 
-    private static Department retriveDepartmentFromDatabase() {
+    private Department retriveDepartmentFromDatabase() {
         String name;
 
         Scanner scanner = new Scanner(System.in);
@@ -123,6 +126,7 @@ public class UniversityGenerate {
         BossView bossView = new BossView();
         BossController bossController = new BossController(departmentBoss, bossView);
         bossController.updateBossView();
+        department.setBossDepartment(departmentBoss);
 
         ArrayList<Group> groups = (ArrayList<Group>) createGroup(scanner);
         department.setGroups(groups);
@@ -130,7 +134,7 @@ public class UniversityGenerate {
         return department;
     }
 
-    private static List<Group> createGroup(Scanner scanner) {
+    private List<Group> createGroup(Scanner scanner) {
         ArrayList<Group> groups = new ArrayList<Group>();
         boolean listCreateFlag = true;
 
@@ -151,7 +155,7 @@ public class UniversityGenerate {
         return groups;
     }
 
-    private static Group retriveGroupFromDatabase() {
+    private Group retriveGroupFromDatabase() {
         String number;
 
         Scanner scanner = new Scanner(System.in);
@@ -165,6 +169,7 @@ public class UniversityGenerate {
         BossView bossView = new BossView();
         BossController bossController = new BossController(groupBoss, bossView);
         bossController.updateBossView();
+        group.setBossGroup(groupBoss);
 
         ArrayList<Student> students = (ArrayList<Student>) createStudent(scanner);
         group.setStudents(students);
@@ -172,7 +177,7 @@ public class UniversityGenerate {
         return group;
     }
 
-    private static List<Student> createStudent(Scanner scanner) {
+    private List<Student> createStudent(Scanner scanner) {
         ArrayList<Student> students = new ArrayList<Student>();
         boolean listCreateFlag = true;
 
@@ -192,7 +197,7 @@ public class UniversityGenerate {
         return students;
     }
 
-    private static Student retriveStudentFromDatabase() {
+    private Student retriveStudentFromDatabase() {
         Scanner scanner = new Scanner(System.in);
         Student student = new Student();
         System.out.print("Enter student name: ");
@@ -209,7 +214,7 @@ public class UniversityGenerate {
         return student;
     }
 
-    private static Boss retriveBossFromDatabase(String nameAria){
+    private Boss retriveBossFromDatabase(String nameAria){
         Scanner scanner = new Scanner(System.in);
 
         Boss boss = new Boss();

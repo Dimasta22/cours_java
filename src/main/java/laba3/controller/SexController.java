@@ -1,6 +1,7 @@
 package laba3.controller;
 
 import laba3.model.Sex;
+import laba3.model.Student;
 
 public class SexController {
 
@@ -8,15 +9,12 @@ public class SexController {
 
         Sex sex = Sex.MALE;
 
-        switch (input){
-            case "Male":
+        switch (input.toUpperCase()){
             case "MALE":
-            case "male":
                 sex = Sex.MALE;
                 break;
-            case "Female":
             case "FEMALE":
-            case "female":
+
                 sex = Sex.FEMALE;
                 break;
         }

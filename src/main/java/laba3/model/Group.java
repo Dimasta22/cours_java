@@ -6,15 +6,7 @@ public class Group extends Department{
     private ArrayList<Student> students;
     private String groupNumber;
 
-    @Override
-    public Boss getBoss() {
-        return super.getBoss();
-    }
-
-    @Override
-    public void setBoss(Boss boss) {
-        super.setBoss(boss);
-    }
+    private Boss bossGroup;
 
     public ArrayList<Student> getStudents() {
         return students;
@@ -30,5 +22,13 @@ public class Group extends Department{
 
     public void setGroupNumber(String groupNumber) {
         this.groupNumber = groupNumber;
+    }
+
+    public Boss getBossGroup() {
+        return bossGroup;
+    }
+
+    public void setBossGroup(Boss bossGroup) {
+        this.bossGroup = bossGroup;
     }
 }

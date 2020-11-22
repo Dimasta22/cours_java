@@ -2,19 +2,10 @@ package laba3.model;
 
 import java.util.ArrayList;
 
-public class Department extends Faculty{
+public class Department extends Faculty {
     public ArrayList<Group> groups;
     private String departmentName;
-
-    @Override
-    public Boss getBoss() {
-        return super.getBoss();
-    }
-
-    @Override
-    public void setBoss(Boss boss) {
-        super.setBoss(boss);
-    }
+    private Boss bossDepartment;
 
 
     public ArrayList<Group> getGroups() {
@@ -31,5 +22,13 @@ public class Department extends Faculty{
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public Boss getBossDepartment() {
+        return bossDepartment;
+    }
+
+    public void setBossDepartment(Boss bossDepartment) {
+        this.bossDepartment = bossDepartment;
     }
 }
