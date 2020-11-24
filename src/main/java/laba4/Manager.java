@@ -1,34 +1,41 @@
 package laba4;
 
 import com.google.gson.Gson;
-import laba3.UniversityGenerate;
-import java.util.Scanner;
+import laba3.model.University;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Manager {
-    Gson gson;
 
-    public Manager(Gson gson) {
-        this.gson = gson;
+    public void writeToFile(University university){
+        Gson gson = new Gson();
+
+        String univerJson = gson.toJson(university);
+
+        try {
+            FileWriter fileWriter = new FileWriter("univer.json");
+            fileWriter.write(univerJson);
+            fileWriter.flush();
+            fileWriter.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
-    public void writeToFile(UniversityGenerate universityGenerate) throws IOException {
-        String univerJson = gson.toJson(universityGenerate);
-        FileWriter fileWriter = new FileWriter("univer.json");
-        fileWriter.write(univerJson);
-        fileWriter.flush();
-        fileWriter.close();
-    }
+    public University readFromFile (){
+        Gson gson = new Gson();
+        try{
+            return gson.fromJson(new FileReader("univer.json"), University.class);
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
 
-    public UniversityGenerate  readFromFile(UniversityGenerate universityGenerate)throws IOException{
-        FileReader fileReader = new FileReader("univer.json");
-        String univerJson = new Scanner(fileReader).next();
-        fileReader.close();
-
-        return gson.fromJson(univerJson,UniversityGenerate.class);
+        return null;
     }
 
 }
